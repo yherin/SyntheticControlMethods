@@ -263,7 +263,7 @@ class DataProcessor(object):
         big_dataframe = np.concatenate((treated_covariates, control_covariates), axis=1)
 
         #Rescale each covariate to have unit variance
-        big_dataframe /= np.apply_along_axis(np.std, 0, big_dataframe)
+        big_dataframe /= np.apply_along_axis(np.std, 1, big_dataframe)
 
         #Re-seperate treated and control from big dataframe
         treated_covariates = big_dataframe[:,0].reshape(n_covariates, 1) #First column is treated unit
